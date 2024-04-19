@@ -7,5 +7,8 @@ export default {
     variants: {
         extend: {},
     },
-    plugins: [],
+    plugins: [require("daisyui")],
+    daisyui: {
+        themes: ["sunset"],
+    },
 };
