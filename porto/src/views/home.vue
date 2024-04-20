@@ -1,7 +1,6 @@
 <template>
     <div
-        id="home"
-        class="h-auto bg-base-300"
+        class="flex h-screen bg-base-300 item-center lg:w-9/12"
         v-for="(profile, index) in profiles"
         :key="index"
     >

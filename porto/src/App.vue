@@ -1,9 +1,10 @@
 <script setup>
-import Home from "./views/home.vue";
-import Navbar from "./components/navbar.vue";
+import Navbar from "./components/Navbar.vue";
 </script>
 
 <template>
-    <Navbar />
-    <Home />
+    <div class="flex-none lg:flex">
+        <Navbar />
+        <router-view />
+    </div>
 </template>
