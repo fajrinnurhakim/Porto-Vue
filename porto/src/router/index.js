@@ -1,46 +1,46 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Profiles from "../views/Profiles.vue";
-import Skills from "../views/Skills.vue";
-import Educations from "../views/Educations.vue";
-import Experiences from "../views/Experiences.vue";
-import Portofolios from "../views/Portofolios.vue";
-
 const routes = [
     {
         path: "/",
         name: "Home",
-        component: Home,
+        component: () =>
+            import(/* webpackChunkName: "profiles" */ "../views/Home.vue"),
     },
     {
         path: "/profiles",
         name: "Profiles",
-        component: Profiles,
+        component: () =>
+            import(/* webpackChunkName: "profiles" */ "../views/Profiles.vue"),
     },
     {
         path: "/skills",
         name: "Skills",
-        component: Skills,
+        component: () =>
+            import(/* webpackChunkName: "skills" */ "../views/Skills.vue"),
     },
     {
         path: "/educations",
         name: "Educations",
-        component: Educations,
+        component: () =>
+            import(
+                /* webpackChunkName: "educations" */ "../views/Educations.vue"
+            ),
     },
     {
         path: "/experiences",
         name: "Experiences",
-        component: Experiences,
+        component: () =>
+            import(
+                /* webpackChunkName: "experiences" */ "../views/Experiences.vue"
+            ),
     },
     {
         path: "/portofolios",
         name: "Portofolios",
-        component: Portofolios,
-    },
-    {
-        path: "/profiles",
-        name: "Profiles",
-        component: Profiles,
+        component: () =>
+            import(
+                /* webpackChunkName: "portofolios" */ "../views/Portofolios.vue"
+            ),
     },
 ];
 

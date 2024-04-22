@@ -1,6 +1,6 @@
 <template>
     <div
-        class="fixed top-0 left-0 right-0 z-50 shadow-lg bg-base-300 lg:hidden"
+        class="fixed top-0 left-0 right-0 z-50 shadow-lg bg-base-200 lg:hidden"
     >
         <div class="container flex mx-auto navbar">
             <div class="navbar-start">
@@ -17,7 +17,10 @@
                 <div class="drawer-side">
                     <ul class="min-h-full p-4 menu w-80 bg-base-200">
                         <div class="flex items-center justify-between">
-                            <a class="flex text-xl btn btn-ghost lg:hidden">
+                            <a
+                                href="/"
+                                class="flex text-xl btn btn-ghost lg:hidden"
+                            >
                                 <span
                                     v-for="(profile, index) in profiles"
                                     :key="index"
@@ -79,15 +82,24 @@
                     </ul>
                 </div>
             </div>
+            <div
+                class="navbar-end"
+                v-for="(profile, index) in profiles"
+                :key="index"
+            >
+                <img :src="profile.image" alt="image" class="w-5 h-6" />
+            </div>
         </div>
     </div>
     <div class="hidden h-screen lg:inline-flex lg:w-3/12 bg-base-300">
         <div
             class="flex items-center justify-center w-5/6 mx-auto my-auto rounded-lg h-5/6 bg-base-100"
         >
-            <div class="flex flex-col items-center justify-center space-y-2">
+            <div
+                class="flex flex-col items-center justify-center pt-5 space-y-1 shadow shadow-base-300"
+            >
                 <span v-for="(profile, index) in profiles" :key="index">
-                    <img :src="profile.image" alt="image" class="h-24" />
+                    <img :src="profile.image" alt="image" class="w-20 h-24" />
                 </span>
                 <p class="font-bold">Fajrin Nurhakim</p>
                 <p class="text-center">
