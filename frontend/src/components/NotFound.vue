@@ -9,7 +9,7 @@
 <script>
 import { useHead } from "@vueuse/head";
 useHead({
-    title: "Fajrin Nurhakim | 404 Not Found",
+    title: "Fajrin Nurhakim | 404 Page Not Found",
 });
 </script>
 
