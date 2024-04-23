@@ -42,6 +42,14 @@ const routes = [
                 /* webpackChunkName: "portofolios" */ "../views/Portofolios.vue"
             ),
     },
+    {
+        path: "/:catchAll(.*)",
+        name: "NotFound",
+        component: () =>
+            import(
+                /* webpackChunkName: "notfound" */ "../components/NotFound.vue"
+            ),
+    },
 ];
 
 const router = createRouter({
