@@ -180,6 +180,11 @@
 <script>
 import axios from "axios";
 import LoadingScreen from "../components/LoadingScreen.vue";
+import { useHead } from "@vueuse/head";
+useHead({
+    title: "Fajrin Nurhakim | Education",
+});
+
 export default {
     data() {
         return {
@@ -220,6 +225,9 @@ export default {
                     "https://fajrin-api.vercel.app/educations"
                 );
                 this.educations = response.data;
+                this.educations.sort(
+                    (a, b) => new Date(b.start_date) - new Date(a.start_date)
+                );
                 setTimeout(() => {
                     this.loading = false;
                 }, 1000);
@@ -233,6 +241,9 @@ export default {
                     "https://fajrin-api.vercel.app/awards"
                 );
                 this.awards = response.data;
+                this.awards.sort(
+                    (a, b) => new Date(b.win_date) - new Date(a.win_date)
+                );
                 setTimeout(() => {
                     this.loading = false;
                 }, 1000);

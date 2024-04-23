@@ -2,5 +2,6 @@ import { createApp } from "vue";
 import "./styles/globals.css";
 import App from "./App.vue";
 import router from "./router";
-
-createApp(App).use(router).mount("#app");
+import { createHead } from "@vueuse/head";
+const head = createHead();
+createApp(App).use(head).use(router).mount("#app");

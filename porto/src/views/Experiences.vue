@@ -139,7 +139,10 @@
 <script>
 import axios from "axios";
 import LoadingScreen from "../components/LoadingScreen.vue";
-
+import { useHead } from "@vueuse/head";
+useHead({
+    title: "Fajrin Nurhakim | Experience",
+});
 export default {
     name: "Experiencess",
     data() {
@@ -187,6 +190,9 @@ export default {
                     "https://fajrin-api.vercel.app/experiences"
                 );
                 this.experiences = response.data;
+                this.experiences.sort(
+                    (a, b) => new Date(b.start_date) - new Date(a.start_date)
+                );
                 setTimeout(() => {
                     this.loading = false;
                 }, 1000);

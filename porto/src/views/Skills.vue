@@ -86,6 +86,10 @@
 <script>
 import axios from "axios";
 import LoadingScreen from "../components/LoadingScreen.vue";
+import { useHead } from "@vueuse/head";
+useHead({
+    title: "Fajrin Nurhakim | Skill",
+});
 export default {
     data() {
         return {

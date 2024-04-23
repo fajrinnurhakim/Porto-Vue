@@ -9,7 +9,7 @@
                 Portofolio <i class="fa-solid fa-file-contract"></i>
             </h1>
             <div class="w-full p-5 rounded-box bg-base-100">
-                <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
                     <div
                         v-for="(portofolio, index) in portofoliosToShow"
                         :key="index"
@@ -144,6 +144,10 @@
 <script>
 import axios from "axios";
 import LoadingScreen from "../components/LoadingScreen.vue";
+import { useHead } from "@vueuse/head";
+useHead({
+    title: "Fajrin Nurhakim | Portofolio",
+});
 export default {
     data() {
         return {
@@ -187,7 +191,7 @@ export default {
         portofoliosToShow() {
             return this.showAllPortfolios
                 ? this.portofolios
-                : this.portofolios.slice(0, 3);
+                : this.portofolios.slice(0, 6);
         },
     },
 };

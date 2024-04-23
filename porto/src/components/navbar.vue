@@ -43,31 +43,31 @@
                         <li>
                             <router-link to="/profiles"
                                 ><i class="w-4 fa-solid fa-id-badge"></i>
-                                Profiles
+                                Profile
                             </router-link>
                         </li>
                         <li>
                             <router-link to="/skills"
                                 ><i class="w-4 fa-solid fa-gears"></i>
-                                Skills
+                                Skill
                             </router-link>
                         </li>
                         <li>
                             <router-link to="/educations"
                                 ><i class="w-4 fa-solid fa-user-graduate"></i>
-                                Educations
+                                Education
                             </router-link>
                         </li>
                         <li>
                             <router-link to="/experiences"
                                 ><i class="w-4 fa-solid fa-briefcase"></i>
-                                Experiences
+                                Experience
                             </router-link>
                         </li>
                         <li>
                             <router-link to="/portofolios"
                                 ><i class="w-4 fa-solid fa-file-contract"></i>
-                                Portofolios
+                                Portofolio
                             </router-link>
                         </li>
                         <li>
@@ -88,6 +88,7 @@
                 :key="index"
             >
                 <img :src="profile.image" alt="image" class="w-5 h-6" />
+                <span class="mx-2 font-medium">{{ profile.name }}</span>
             </div>
         </div>
     </div>
@@ -115,31 +116,31 @@
                     <li>
                         <router-link to="/profiles"
                             ><i class="w-4 fa-solid fa-id-badge"></i>
-                            Profiles
+                            Profile
                         </router-link>
                     </li>
                     <li>
                         <router-link to="/skills"
                             ><i class="w-4 fa-solid fa-gears"></i>
-                            Skills
+                            Skill
                         </router-link>
                     </li>
                     <li>
                         <router-link to="/educations"
                             ><i class="w-4 fa-solid fa-user-graduate"></i>
-                            Educations
+                            Education
                         </router-link>
                     </li>
                     <li>
                         <router-link to="/experiences"
                             ><i class="w-4 fa-solid fa-briefcase"></i>
-                            Experiences
+                            Experience
                         </router-link>
                     </li>
                     <li>
                         <router-link to="/portofolios"
                             ><i class="w-4 fa-solid fa-file-contract"></i>
-                            Portofolios
+                            Portofolio
                         </router-link>
                     </li>
                 </ul>
