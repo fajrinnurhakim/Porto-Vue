@@ -17,7 +17,7 @@
         <p class="text-base-content">
           Combining expertise in developing captivating user interfaces with a
           keen attention to detail to ensure optimal product quality, Let's
-          create something extraordinary together!
+          create something extraordinary together
         </p>
         <a :href="profile.link_cv" class="btn btn-outline">
           Curriculum Vitae
