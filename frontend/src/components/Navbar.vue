@@ -1,74 +1,7 @@
 <template>
   <div class="fixed top-0 left-0 right-0 z-50 shadow-lg bg-base-200 lg:hidden">
     <div class="container flex mx-auto navbar">
-      <div class="navbar-start">
-        <div class="flex-none lg:hidden">
-          <label
-            for="my-drawer-3"
-            aria-label="open sidebar"
-            class="btn btn-square btn-ghost"
-          >
-            <i class="fa-solid fa-bars"></i>
-          </label>
-        </div>
-        <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-side">
-          <ul class="min-h-full p-4 menu w-80 bg-base-200">
-            <div class="flex items-center justify-between">
-              <a href="/" class="flex text-xl btn btn-ghost lg:hidden">
-                <span v-for="(profile, index) in profiles" :key="index">
-                  <img :src="profile.image" alt="image" class="w-5 h-6" />
-                </span>
-                Fajrin Nurhakim
-              </a>
-            </div>
-            <li>
-              <router-link to="/">
-                <i class="w-4 fa-solid fa-house"></i>
-                Home
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/profiles"
-                ><i class="w-4 fa-solid fa-id-badge"></i>
-                Profile
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/skills"
-                ><i class="w-4 fa-solid fa-gears"></i>
-                Skill
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/educations"
-                ><i class="w-4 fa-solid fa-user-graduate"></i>
-                Education
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/experiences"
-                ><i class="w-4 fa-solid fa-briefcase"></i>
-                Experience
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/portofolios"
-                ><i class="w-4 fa-solid fa-file-contract"></i>
-                Portofolio
-              </router-link>
-            </li>
-            <li>
-              <label
-                for="my-drawer-3"
-                aria-label="close sidebar"
-                class="drawer-overlay btn-ghost"
-                ><i class="w-4 fa-solid fa-circle-xmark"></i>Close</label
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div class="navbar-start"></div>
       <div class="navbar-end" v-for="(profile, index) in profiles" :key="index">
         <img :src="profile.image" alt="image" class="w-5 h-6" />
         <span class="mx-2 font-medium">{{ profile.name }}</span>
@@ -138,6 +71,56 @@
       </div>
     </div>
   </div>
+  <div class="fixed z-50 btm-nav btm-nav-xs lg:hidden">
+    <button
+      :class="{ active: activeMenu === 'home' }"
+      @click="handleMenuClick('home')"
+    >
+      <router-link to="/">
+        <i class="w-4 fa-solid fa-house"></i>
+      </router-link>
+    </button>
+    <button
+      :class="{ active: activeMenu === 'profiles' }"
+      @click="handleMenuClick('profiles')"
+    >
+      <router-link to="/profiles">
+        <i class="w-4 fa-solid fa-id-badge"></i>
+      </router-link>
+    </button>
+    <button
+      :class="{ active: activeMenu === 'skills' }"
+      @click="handleMenuClick('skills')"
+    >
+      <router-link to="/skills">
+        <i class="w-4 fa-solid fa-gears"></i>
+      </router-link>
+    </button>
+    <button
+      :class="{ active: activeMenu === 'educations' }"
+      @click="handleMenuClick('educations')"
+    >
+      <router-link to="/educations">
+        <i class="w-4 fa-solid fa-user-graduate"></i>
+      </router-link>
+    </button>
+    <button
+      :class="{ active: activeMenu === 'experiences' }"
+      @click="handleMenuClick('experiences')"
+    >
+      <router-link to="/experiences">
+        <i class="w-4 fa-solid fa-briefcase"></i>
+      </router-link>
+    </button>
+    <button
+      :class="{ active: activeMenu === 'portofolios' }"
+      @click="handleMenuClick('portofolios')"
+    >
+      <router-link to="/portofolios">
+        <i class="w-4 fa-solid fa-file-contract"></i>
+      </router-link>
+    </button>
+  </div>
 </template>
 
 <script>
@@ -162,6 +145,7 @@ export default {
         console.error('Error fetching profiles:', error);
       }
     };
+
     const loadSocmeds = async () => {
       try {
         const response = await axios.get(
@@ -174,7 +158,7 @@ export default {
     };
 
     const handleMenuClick = (menu) => {
-      activeMenu.value = menu.name;
+      activeMenu.value = menu;
     };
 
     onMounted(() => {
