@@ -48,13 +48,13 @@
           <li>
             <router-link to="/experiences"
               ><i class="w-4 fa-solid fa-briefcase"></i>
-              Experience
+              Experiences
             </router-link>
           </li>
           <li>
             <router-link to="/portofolios"
               ><i class="w-4 fa-solid fa-file-contract"></i>
-              Portofolio
+              Portofolios
             </router-link>
           </li>
         </ul>
