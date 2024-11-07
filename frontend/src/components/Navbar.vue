@@ -12,9 +12,7 @@
     <div
       class="flex items-center justify-center w-5/6 mx-auto my-auto rounded-lg h-5/6 bg-base-100"
     >
-      <div
-        class="flex flex-col items-center justify-center pt-5 space-y-1 shadow shadow-base-300"
-      >
+      <div class="flex flex-col items-center justify-center pt-5 space-y-1">
         <span v-for="(profile, index) in profiles" :key="index">
           <img :src="profile.image" alt="image" class="w-20 h-24" />
         </span>
