@@ -93,17 +93,17 @@
         <div class="flex space-x-2">
           <img
             :src="selectedPortofolio.tech_stack1"
-            alt="portofolio1"
+            alt="tech_stack1"
             class="h-5"
           />
           <img
             :src="selectedPortofolio.tech_stack2"
-            alt="portofolio1"
+            alt="tech_stack2"
             class="h-5"
           />
           <img
             :src="selectedPortofolio.tech_stack3"
-            alt="portofolio1"
+            alt="tech_stack3"
             class="h-5"
           />
         </div>

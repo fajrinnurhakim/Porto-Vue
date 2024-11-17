@@ -43,17 +43,17 @@
               <div class="flex space-x-2">
                 <img
                   :src="experience.tech_stack1"
-                  alt="experience1"
+                  alt="tech_stack1"
                   class="h-5"
                 />
                 <img
                   :src="experience.tech_stack2"
-                  alt="experience1"
+                  alt="tech_stack2"
                   class="h-5"
                 />
                 <img
                   :src="experience.tech_stack3"
-                  alt="experience1"
+                  alt="tech_stack3"
                   class="h-5"
                 />
               </div>
