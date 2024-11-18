@@ -66,11 +66,33 @@
             </div>
           </div>
         </div>
+
         <div class="flex justify-end mt-4">
-          <button @click="toggleShowAllPortfolios" class="btn">
-            {{ showAllPortfolios ? 'View Less' : 'View More' }}
-            <i class="fa-solid fa-external-link-alt"></i>
-          </button>
+          <div class="join">
+            <button
+              class="join-item btn"
+              :disabled="currentPage === 1"
+              @click="prevPage"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button
+              v-for="page in totalPages"
+              :key="page"
+              class="join-item btn"
+              :class="{ 'btn-active': page === currentPage }"
+              @click="goToPage(page)"
+            >
+              {{ page }}
+            </button>
+            <button
+              class="join-item btn"
+              :disabled="currentPage === totalPages"
+              @click="nextPage"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -141,6 +163,8 @@ export default {
       portofolios: [],
       showAllPortfolios: false,
       loading: true,
+      currentPage: 1,
+      itemsPerPage: 6,
     };
   },
   components: {
@@ -169,15 +193,31 @@ export default {
         console.error('Error fetching portofolios:', error);
       }
     },
-    toggleShowAllPortfolios() {
-      this.showAllPortfolios = !this.showAllPortfolios;
+    goToPage(pageNumber) {
+      if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+        this.currentPage = pageNumber;
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
     },
   },
+
   computed: {
     portofoliosToShow() {
-      return this.showAllPortfolios
-        ? this.portofolios
-        : this.portofolios.slice(0, 6);
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = startIndex + this.itemsPerPage;
+      return this.portofolios.slice(startIndex, endIndex);
+    },
+    totalPages() {
+      return Math.ceil(this.portofolios.length / this.itemsPerPage);
     },
   },
 };
