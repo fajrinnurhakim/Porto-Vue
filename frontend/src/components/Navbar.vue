@@ -17,7 +17,7 @@
           <img :src="profile.image" alt="image" class="w-20 h-24" />
         </span>
         <p class="font-bold">Fajrin Nurhakim</p>
-        <p class="text-center">FrontEnd & Quality Assurance Enthusiast</p>
+        <p class="text-center">Quality Assurance Enthusiast</p>
         <ul class="w-5/6 menu">
           <li>
             <router-link to="/">
