@@ -55,6 +55,12 @@
               Portofolios
             </router-link>
           </li>
+          <li>
+            <router-link to="/blogs"
+              ><i class="w-4 fa-solid fa-pencil"></i>
+              My Blog
+            </router-link>
+          </li>
         </ul>
         <div class="flex space-x-3">
           <a
@@ -70,54 +76,62 @@
     </div>
   </div>
   <div class="fixed z-50 btm-nav btm-nav-xs lg:hidden">
-    <button
-      :class="{ active: activeMenu === 'home' }"
-      @click="handleMenuClick('home')"
-    >
-      <router-link to="/">
+    <router-link to="/">
+      <button
+        :class="{ active: activeMenu === 'home' }"
+        @click="handleMenuClick('home')"
+      >
         <i class="w-4 fa-solid fa-house"></i>
-      </router-link>
-    </button>
-    <button
-      :class="{ active: activeMenu === 'profiles' }"
-      @click="handleMenuClick('profiles')"
-    >
-      <router-link to="/profiles">
+      </button>
+    </router-link>
+    <router-link to="/profiles">
+      <button
+        :class="{ active: activeMenu === 'profiles' }"
+        @click="handleMenuClick('profiles')"
+      >
         <i class="w-4 fa-solid fa-id-badge"></i>
-      </router-link>
-    </button>
-    <button
-      :class="{ active: activeMenu === 'skills' }"
-      @click="handleMenuClick('skills')"
-    >
-      <router-link to="/skills">
+      </button>
+    </router-link>
+    <router-link to="/skills">
+      <button
+        :class="{ active: activeMenu === 'skills' }"
+        @click="handleMenuClick('skills')"
+      >
         <i class="w-4 fa-solid fa-gears"></i>
-      </router-link>
-    </button>
-    <button
-      :class="{ active: activeMenu === 'educations' }"
-      @click="handleMenuClick('educations')"
-    >
-      <router-link to="/educations">
+      </button>
+    </router-link>
+    <router-link to="/educations">
+      <button
+        :class="{ active: activeMenu === 'educations' }"
+        @click="handleMenuClick('educations')"
+      >
         <i class="w-4 fa-solid fa-user-graduate"></i>
-      </router-link>
-    </button>
-    <button
-      :class="{ active: activeMenu === 'experiences' }"
-      @click="handleMenuClick('experiences')"
-    >
-      <router-link to="/experiences">
+      </button>
+    </router-link>
+    <router-link to="/experiences">
+      <button
+        :class="{ active: activeMenu === 'experiences' }"
+        @click="handleMenuClick('experiences')"
+      >
         <i class="w-4 fa-solid fa-briefcase"></i>
-      </router-link>
-    </button>
-    <button
-      :class="{ active: activeMenu === 'portofolios' }"
-      @click="handleMenuClick('portofolios')"
-    >
-      <router-link to="/portofolios">
+      </button>
+    </router-link>
+    <router-link to="/portofolios">
+      <button
+        :class="{ active: activeMenu === 'portofolios' }"
+        @click="handleMenuClick('portofolios')"
+      >
         <i class="w-4 fa-solid fa-file-contract"></i>
-      </router-link>
-    </button>
+      </button>
+    </router-link>
+    <router-link to="/blogs">
+      <button
+        :class="{ active: activeMenu === 'blogs' }"
+        @click="handleMenuClick('blogs')"
+      >
+        <i class="w-4 fa-solid fa-pencil"></i>
+      </button>
+    </router-link>
   </div>
 </template>
 
