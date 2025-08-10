@@ -74,7 +74,11 @@
         <h2 class="text-xs font-bold text-center md:text-sm">
           {{ selectedBlog.date }} | by Fajrin Nurhakim
         </h2>
-        <p class="text-xs md:text-sm">{{ selectedBlog.description }}</p>
+        <p
+          class="text-xs leading-relaxed text-justify whitespace-pre-line md:text-sm"
+        >
+          {{ selectedBlog.description }}
+        </p>
         <div class="divider"></div>
         <p
           class="text-xs leading-relaxed text-justify whitespace-pre-line md:text-sm"
