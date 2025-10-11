@@ -59,14 +59,14 @@
       class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full p-5 bg-black bg-opacity-50"
     >
       <div class="w-full p-6 space-y-4 bg-base-100 rounded-lg md:w-96">
-        <h2 class="text-xl font-bold text-center">Enter Password</h2>
+        <h2 class="text-xl font-bold text-center">Enter Pin</h2>
         <div class="relative w-full">
           <input
             :type="showPassword ? 'text' : 'password'"
             v-model="enteredPassword"
             inputmode="numeric"
             pattern="[0-9]*"
-            placeholder="Enter password"
+            placeholder="Enter your Pin"
             class="w-full input input-bordered pr-10"
             @keypress="allowOnlyNumbers"
             @keyup.enter="verifyPassword"
