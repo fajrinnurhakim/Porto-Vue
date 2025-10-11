@@ -55,6 +55,51 @@
     </div>
 
     <div
+      v-if="showPasswordPrompt"
+      class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full p-5 bg-black bg-opacity-50"
+    >
+      <div class="w-full p-6 space-y-4 bg-base-100 rounded-lg md:w-96">
+        <h2 class="text-xl font-bold text-center">Enter Password</h2>
+        <div class="relative w-full">
+          <input
+            :type="showPassword ? 'text' : 'password'"
+            v-model="enteredPassword"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            placeholder="Enter password"
+            class="w-full input input-bordered pr-10"
+            @keypress="allowOnlyNumbers"
+            @keyup.enter="verifyPassword"
+          />
+          <span
+            class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+            @click="showPassword = !showPassword"
+          >
+            <i
+              :class="
+                showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'
+              "
+            ></i>
+          </span>
+        </div>
+        <p v-if="passwordError" class="text-sm text-center text-error">
+          {{ passwordError }}
+        </p>
+        <div class="flex justify-between pt-2">
+          <button
+            class="btn btn-outline btn-error"
+            @click="showPasswordPrompt = false"
+          >
+            Cancel
+          </button>
+          <button class="btn btn-primary" @click="verifyPassword">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
       v-if="selectedBlog"
       class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full p-5 bg-black bg-opacity-50"
     >
@@ -86,7 +131,10 @@
           {{ selectedBlog.content }}
         </p>
         <div class="text-xs font-bold divider md:text-sm">Album</div>
-        <div class="grid grid-cols-2 gap-4 py-3 md:grid-cols-3">
+        <div
+          v-if="hasAnyImage"
+          class="grid grid-cols-2 gap-4 py-3 md:grid-cols-3"
+        >
           <img :src="selectedBlog.image1" alt="image1" class="w-auto" />
           <img :src="selectedBlog.image2" alt="image2" class="w-auto" />
           <img :src="selectedBlog.image3" alt="image3" class="w-auto" />
@@ -114,8 +162,13 @@ export default {
       blogs: [],
       showAllPortfolios: false,
       loading: true,
+      showPassword: false,
       currentPage: 1,
       itemsPerPage: 6,
+      showPasswordPrompt: false,
+      blogToOpen: null,
+      enteredPassword: '',
+      passwordError: '',
     };
   },
   components: {
@@ -126,7 +179,26 @@ export default {
   },
   methods: {
     openModal(blog) {
-      this.selectedBlog = blog;
+      this.blogToOpen = blog;
+      this.enteredPassword = '';
+      this.passwordError = '';
+      this.showPasswordPrompt = true;
+    },
+    allowOnlyNumbers(e) {
+      const charCode = e.charCode;
+      if (charCode < 48 || charCode > 57) {
+        e.preventDefault(); // Hanya izinkan angka 0-9
+      }
+    },
+    verifyPassword() {
+      const correctPassword = '111101';
+      if (this.enteredPassword === correctPassword) {
+        this.selectedBlog = this.blogToOpen;
+        this.showPasswordPrompt = false;
+        this.blogToOpen = null;
+      } else {
+        this.passwordError = 'Incorrect password. Please try again.';
+      }
     },
     closeModal() {
       this.selectedBlog = null;
@@ -160,6 +232,18 @@ export default {
   },
 
   computed: {
+    hasAnyImage() {
+      const img = this.selectedBlog;
+      return (
+        img &&
+        (img.image1 ||
+          img.image2 ||
+          img.image3 ||
+          img.image4 ||
+          img.image5 ||
+          img.image6)
+      );
+    },
     blogsToShow() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
