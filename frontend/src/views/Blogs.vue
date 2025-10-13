@@ -66,7 +66,7 @@
             v-model="enteredPassword"
             inputmode="numeric"
             pattern="[0-9]*"
-            placeholder="Enter your Pin"
+            placeholder="* * * * * *"
             class="w-full input input-bordered pr-10"
             @keypress="allowOnlyNumbers"
             @keyup.enter="verifyPassword"
@@ -164,7 +164,7 @@ export default {
       loading: true,
       showPassword: false,
       currentPage: 1,
-      itemsPerPage: 6,
+      itemsPerPage: 5,
       showPasswordPrompt: false,
       blogToOpen: null,
       enteredPassword: '',
