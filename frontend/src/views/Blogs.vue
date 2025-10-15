@@ -60,27 +60,20 @@
     >
       <div class="w-full p-6 space-y-4 bg-base-100 rounded-lg md:w-96">
         <h2 class="text-xl font-bold text-center">Enter Pin</h2>
-        <div class="relative w-full">
+        <div class="relative w-full inline-grid grid-cols-6 gap-3">
           <input
-            :type="showPassword ? 'text' : 'password'"
-            v-model="enteredPassword"
+            v-for="(digit, index) in pinDigits"
+            :key="index"
+            type="text"
+            maxlength="1"
             inputmode="numeric"
             pattern="[0-9]*"
-            placeholder="* * * * * *"
-            class="w-full input input-bordered pr-10"
-            @keypress="allowOnlyNumbers"
-            @keyup.enter="verifyPassword"
+            class="w-12 h-12 text-center text-xl input input-bordered"
+            v-model="pinDigits[index]"
+            @input="onInput($event, index)"
+            @keydown.backspace="onBackspace($event, index)"
+            ref="pinInputs"
           />
-          <span
-            class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
-            @click="showPassword = !showPassword"
-          >
-            <i
-              :class="
-                showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'
-              "
-            ></i>
-          </span>
         </div>
         <p v-if="passwordError" class="text-sm text-center text-error">
           {{ passwordError }}
@@ -162,13 +155,13 @@ export default {
       blogs: [],
       showAllPortfolios: false,
       loading: true,
-      showPassword: false,
       currentPage: 1,
       itemsPerPage: 5,
       showPasswordPrompt: false,
       blogToOpen: null,
       enteredPassword: '',
       passwordError: '',
+      pinDigits: Array(6).fill(''),
     };
   },
   components: {
@@ -190,14 +183,36 @@ export default {
         e.preventDefault(); // Hanya izinkan angka 0-9
       }
     },
+    onInput(e, index) {
+      const value = e.target.value;
+
+      // Allow only digits
+      if (!/^\d$/.test(value)) {
+        this.pinDigits[index] = '';
+        return;
+      }
+
+      if (index < this.pinDigits.length - 1) {
+        this.$refs.pinInputs[index + 1].focus();
+      }
+    },
+
+    onBackspace(e, index) {
+      if (e.key === 'Backspace' && this.pinDigits[index] === '' && index > 0) {
+        this.$refs.pinInputs[index - 1].focus();
+      }
+    },
     verifyPassword() {
       const correctPassword = '111101';
-      if (this.enteredPassword === correctPassword) {
+      const enteredPin = this.pinDigits.join('');
+
+      if (enteredPin === correctPassword) {
         this.selectedBlog = this.blogToOpen;
         this.showPasswordPrompt = false;
         this.blogToOpen = null;
+        this.pinDigits = Array(6).fill('');
       } else {
-        this.passwordError = 'Incorrect password. Please try again.';
+        this.passwordError = 'Incorrect PIN. Please try again.';
       }
     },
     closeModal() {
