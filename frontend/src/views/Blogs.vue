@@ -68,7 +68,7 @@
             maxlength="1"
             inputmode="numeric"
             pattern="[0-9]*"
-            class="w-10 h-10 text-center text-sm input input-bordered md:w-12 md:h-12 md:text-xl"
+            class="w-11 h-11 text-center text-sm input input-bordered md:w-12 md:h-12 md:text-xl"
             v-model="pinDigits[index]"
             @input="onInput($event, index)"
             @keydown.backspace="onBackspace($event, index)"
