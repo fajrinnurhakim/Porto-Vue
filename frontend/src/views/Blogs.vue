@@ -6,7 +6,7 @@
   >
     <div class="w-full">
       <h1 class="mb-12 text-2xl font-bold text-center md:text-4xl">
-        My Blog <i class="fa-solid fa-file-contract"></i>
+        Life as i know it <i class="fa-solid fa-file-contract"></i>
       </h1>
       <div class="w-full p-5 h-fit rounded-box bg-base-100">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
@@ -58,9 +58,9 @@
       v-if="showPasswordPrompt"
       class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full p-5 bg-black bg-opacity-50"
     >
-      <div class="w-full p-6 space-y-4 bg-base-100 rounded-lg md:w-96">
+      <div class="w-full p-6 space-y-4 rounded-lg bg-base-100 md:w-96">
         <h2 class="text-xl font-bold text-center">Enter Pin</h2>
-        <div class="relative w-full inline-grid grid-cols-6 gap-3">
+        <div class="relative inline-grid w-full grid-cols-6 gap-3">
           <input
             v-for="(digit, index) in pinDigits"
             :key="index"
@@ -68,7 +68,7 @@
             maxlength="1"
             inputmode="numeric"
             pattern="[0-9]*"
-            class="w-11 h-11 text-center text-sm input input-bordered md:w-12 md:h-12 md:text-xl"
+            class="text-sm text-center w-11 h-11 input input-bordered md:w-12 md:h-12 md:text-xl"
             v-model="pinDigits[index]"
             @input="onInput($event, index)"
             @keydown.backspace="onBackspace($event, index)"
