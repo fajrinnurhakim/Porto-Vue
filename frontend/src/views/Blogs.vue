@@ -6,7 +6,7 @@
   >
     <div class="w-full">
       <h1 class="mb-12 text-2xl font-bold text-center md:text-4xl">
-        Life as i know it <i class="fa-solid fa-file-contract"></i>
+        Slice of Life <i class="fa-solid fa-file-contract"></i>
       </h1>
       <div class="w-full p-5 h-fit rounded-box bg-base-100">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
