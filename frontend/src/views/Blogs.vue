@@ -213,7 +213,7 @@ export default {
       }
     },
     verifyPassword() {
-      const correctPassword = '111101';
+      const correctPassword = '136479';
       const enteredPin = this.pinDigits.join('');
 
       if (enteredPin === correctPassword) {
