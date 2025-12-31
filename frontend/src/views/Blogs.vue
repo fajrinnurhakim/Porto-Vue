@@ -24,7 +24,16 @@
           </div>
         </div>
 
-        <div class="flex justify-end mt-4">
+        <div class="flex items-center justify-between mt-4 gap-4">
+          <select
+            v-model="selectedYear"
+            class="select select-bordered w-full max-w-xs"
+            @change="currentPage = 1"
+          >
+            <option v-for="year in availableYears" :key="year" :value="year">
+              {{ year }}
+            </option>
+          </select>
           <div class="join">
             <button
               class="join-item btn"
@@ -162,6 +171,7 @@ export default {
       enteredPassword: '',
       passwordError: '',
       pinDigits: Array(6).fill(''),
+      selectedYear: 'All',
     };
   },
   components: {
@@ -259,13 +269,33 @@ export default {
           img.image6)
       );
     },
+    availableYears() {
+      const years = this.blogs.map((blog) => {
+        const date = new Date(blog.date);
+        return date.getFullYear();
+      });
+      return ['All', ...new Set(years)];
+    },
+
+    filteredBlogs() {
+      if (this.selectedYear === 'All') {
+        return this.blogs;
+      }
+
+      return this.blogs.filter((blog) => {
+        const year = new Date(blog.date).getFullYear();
+        return year === Number(this.selectedYear);
+      });
+    },
+
     blogsToShow() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
-      return this.blogs.slice(startIndex, endIndex);
+      return this.filteredBlogs.slice(startIndex, endIndex);
     },
+
     totalPages() {
-      return Math.ceil(this.blogs.length / this.itemsPerPage);
+      return Math.ceil(this.filteredBlogs.length / this.itemsPerPage);
     },
   },
 };
